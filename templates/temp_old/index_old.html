@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>CSV Upload</title>
+</head>
+<body>
+
+     <!-- Navigation Bar -->
+    <nav>
+        <div class="container">
+            <div class="logo">MyWebsite</div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="upload.html">Upload</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <h1>Upload CSV File</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form>
+
+    <a href="/show"><button>Show Data</button></a>
+
+
+     <!-- Footer -->
+    <footer>
+        <p><a href="contact.html">Contact Us</a></p>
+        <p>&copy; 2024 Your Website Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<h2>Preview Uploaded File</h2>
+<form action="/save-edited-data" method="POST">
+    <table>
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td><input type="text" name="edited_data" value="{{ cell }}"></td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="hidden" name="filename" value="{{ filename }}">
+    <button type="submit">Save Changes</button>
+    <a href="/upload">Go Back to Edit</a>
+</form>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit CSV File</title>
+</head>
+<body>
+    <h1>Edit Your Uploaded CSV</h1>
+
+    <form method="POST" action="/save">
+        <input type="hidden" name="file_id" value="{{ file_id }}">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in edited_csv_data %}
+                <tr>
+                    <td><input type="text" name="edited_data" value="{{ row['filename'] }},{{ row['data'] }}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!-- logs.html -->
+{% extends "base.html" %}
+{% block title %}Error Logs{% endblock %}
+
+{% block content %}
+<h2>Error Logs</h2>
+<hr>
+<a href="{{ url_for('admin') }}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+<div class="logs">
+    <pre>
+        {% for log in logs %}
+            {{ log }}
+        {% endfor %}
+    </pre>
+</div>
+
+
+{% endblock %}

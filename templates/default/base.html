@@ -1,0 +1,131 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GSDB{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+<!--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">
+<style>
+    body {
+        background-image: url('/static/img/bg2.png');
+        background-size: cover; /* Ensure the image covers the entire page */
+        background-position: center; /* Center the background image */
+        background-attachment: fixed; /* Make sure it stays fixed during scrolling */
+        background-repeat: no-repeat; /* Prevent the image from repeating */
+    }
+
+    /* Optional: To make the content more readable on the background */
+    .content-container {
+        background-color: rgba(255, 255, 255, 0.8); /* Add a white background with opacity */
+        padding: 20px;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--        <div class="container">-->
+<!--            <a class="navbar-brand" href="{{ url_for('home') }}">GSDB</a>-->
+<!--            <div class="navbar-nav">-->
+<!--                {% if current_user.is_authenticated %}-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('info') }}">Info</a>-->
+<!--                    {% if current_user.is_admin %}-->
+<!--                        <a class="nav-item nav-link" href="{{ url_for('admin') }}">Admin Dashbord</a>-->
+<!--                    {% endif %}-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>-->
+<!--                {% else %}-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>-->
+<!--                {% endif %}-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<div class="content-container">
+<nav class="navbar navbar-expand-lg" style="background-color: #656e9a;">
+    <div class="container">
+        <a class="navbar-brand text-white" href="{{ url_for('home') }}">GSDB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('info') }}">Info</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('show_data') }}">show data</a>
+                    </li>
+                <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('upload_file') }}">UPLOAD</a>
+                    </li>
+                    {% if current_user.is_admin %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ url_for('admin') }}">Admin Dashboard</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('about') }}">About</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('register') }}" class="btn btn-outline-light">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+
+ <footer class="text-white py-3" style="background-color: #656e9a;">
+    <div class="container d-flex justify-content-between">
+        <div class="text-center">
+            <p class="mb-0">Copyright by NIPGR HRD Cell</p>
+        </div>
+        <div>
+            <a href="#" class="text-white me-3">LAB Members</a>
+            <a href="#" class="text-white me-3">NIPGR</a>
+            <a href="#" class="text-white">About</a>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

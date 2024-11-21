@@ -1,0 +1,30 @@
+<!-- templates/info.html -->
+{% extends "base.html" %}
+{% block title %}Info{% endblock %}
+{% block content %}
+    <h1>Welcome {{ current_user.username }}!</h1>
+    <hr>
+    <p>Here, you’ll find a comprehensive collection of phytochemical data curated by the Universal Petrochemical Reader (UPR).</p>
+</br>
+    <h2>What is Universal Phytochemical Reader:</h2>
+    <P>The UPR harnesses the vast wealth of knowledge contained in over 500 million pages of published scholarly research on biologically active volatile organic compounds (BVOCs) produced by plants in various environmental conditions. Our goal is to unlock this valuable information for the benefit of research and climate action.</P>
+    <h3>What You Can Do Here:</h3>
+</br>
+<ul>
+    <li>
+        <h5>Upload Data:</h5>
+        <p>First, register yourself. Once approved by the admin, log in using your username and password. Then, navigate to the "Upload Data" page and submit your file. A popup message will confirm that your data has been successfully submitted to the database.</p>
+    </li>
+    <li>
+        <h5>Explore Data:</h5>
+        <p>First, register yourself. Once approved by the admin, log in using your username and password. You can then explore all the data in our database with ease. Simply click on the navigation bar and select 'Show Data' to access a comprehensive view of the information available to you</p>
+    </li>
+    <li>
+        <h5>Search Efficiently:</h5>
+        <p>Use our advanced filters to find the specific data you need quickly.</p>
+    </li>
+</ul>
+
+    <hr>
+    <p>Join us in advancing research and making a positive impact on our planet!</p>
+{% endblock %}

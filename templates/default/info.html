@@ -1,0 +1,18 @@
+<!-- templates/info.html -->
+{% extends "base.html" %}
+{% block title %}Info{% endblock %}
+{% block content %}
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    <hr>
+    <p>Here, you’ll find a comprehensive collection of petrochemical data curated by the Universal Petrochemical Reader (UPR).</p>
+</br>
+    <h3>What You Can Do Here:</h3>
+</br>
+    <ul>
+        <li><h5>Upload Data:</h5><p>Share your findings and contribute to our growing database.</p></li>
+        <li><h5>Explore Data:</h5><p>Access a wealth of petrochemical information at your fingertips.</p></li>
+        <li><h5>Search Efficiently:</h5><p>Use our advanced filters to find the specific data you need quickly</p></li>
+    </ul>
+    <hr>
+    <p>Join us in advancing research and making a positive impact on our planet!</p>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Show Data</title>
+</head>
+<body>
+    <h1>Data from CSV</h1>
+    <table border="1">
+        <tr>
+            <th>Species</th>
+            <th>Chemical</th>
+            <th>Amount</th>
+            <th>DOI</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row['Species'] }}</td>
+            <td>{{ row['Chemical'] }}</td>
+            <td>{{ row['Amount'] }}</td>
+            <td>{{ row['DOI'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

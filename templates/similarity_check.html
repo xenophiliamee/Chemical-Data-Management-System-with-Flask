@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Uploaded Data{% endblock %}
+{% block content %}
+
+<h3>Uploaded Data</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Species</th>
+            <th>Chemical</th>
+            <th>Amount</th>
+            <th>DOI</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.species }}</td>
+            <td>{{ row.chemical }}</td>
+            <td>{{ row.amount }}</td>
+            <td>{{ row.doi }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Upload Logs</h3>
+<ul>
+    {% for upload in uploads %}
+    <li>{{ upload.user.username }} uploaded {{ upload.filename }} on {{ upload.upload_date }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

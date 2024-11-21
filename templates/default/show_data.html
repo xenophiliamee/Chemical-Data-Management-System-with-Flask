@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Info{% endblock %}
+{% block content %}
+
+<h3>Uploaded Data</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            {% for col in data[0].keys() %}
+            {% if col != 'uploaded_by' %}  <!-- Skip the redundant 'uploaded_by' key here -->
+            <th>{{ col }}</th>
+            {% endif %}
+            {% endfor %}
+            <th>Uploaded By</th> <!-- Keep only this one -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            {% for key, value in row.items() %}
+            {% if key != 'uploaded_by' %}  <!-- Skip the redundant 'uploaded_by' key in the row -->
+            <td>{{ value }}</td>
+            {% endif %}
+            {% endfor %}
+            <td>{{ row.uploaded_by }}</td> <!-- Keep only this one for uploader name -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<h3>Upload Logs</h3>
+<ul>
+    {% for upload in uploads %}
+    <li>{{ upload.user.username }} uploaded {{ upload.filename }} on {{ upload.upload_date }}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

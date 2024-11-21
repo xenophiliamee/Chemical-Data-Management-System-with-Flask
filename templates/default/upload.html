@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Upload File{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h3 class="mb-4">Upload File</h3>
+
+    <!-- Upload Form -->
+    <form action="" method="post" enctype="multipart/form-data" class="form-inline">
+        <div class="form-group">
+            <input type="file" name="file" class="form-control" required>
+        </div>
+        <div class="form-group ml-2">
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+    </form>
+
+    <!-- Show uploaded data if available -->
+    {% if uploaded_data %}
+    <div class="mt-5">
+        <h3>Uploaded Data Preview</h3>
+        <table class="table table-striped table-bordered mt-3">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Chemical</th>
+                    <th>Exists in Database?</th>
+                    <th>Similarity (%)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in uploaded_data %}
+                <tr>
+                    <td>{{ data.chemical }}</td>
+                    <td>{{ 'Yes' if data.exists else 'No' }}</td>
+                    <td>{{ data.similarity }}%</td>
+                    <td>
+                        <form action="{{ url_for('edit_chemical', index=loop.index0) }}" method="post" class="d-inline-block">
+                            <input type="text" name="new_chemical" class="form-control mb-2" placeholder="New Name">
+                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                        </form>
+                        <form action="{{ url_for('remove_chemical', index=loop.index0) }}" method="post" class="d-inline-block">
+                            <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+</br>
+</br>
+{% endblock %}
